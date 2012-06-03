@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BodyBay</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<!-- START_HIGHLIGHT -->
+<body class='<%= controller.controller_name %>'>
+<!-- END_HIGHLIGHT -->
+  <div id="banner">
+    
+    <%= image_tag("logo_bb.png") %>
+
+    <div id="title"><%= @page_title || t(".BodyBay") %></div><!-- <label id="code.depot.e.title"/> -->
+      <div id="signin">Welcome! <a href="#">Sign-in</a>, New Customer? Start <a href="#">here</a><br/><%= Time.now %></div>
+  </div>
+  <div id="topright">
+    
+    <a href="#">My BodyBay</a>
+
+    <a href="#" alt="My Bag" title="My Bag"><%= image_tag("bag.jpeg") %></a>&nbsp;&nbsp;&nbsp;
+    <a href="#">Customer Support</a>	
+  </div>
+  <div id="columns">
+    <div id="side">
+      <%= form_tag store_path, class: 'locale' do %>
+        <%= select_tag 'set_locale', 
+          options_for_select(LANGUAGES, I18n.locale.to_s),
+          onchange: 'this.form.submit()' %>
+        <%= submit_tag 'submit' %>
+        <%= javascript_tag "$('.locale input').hide()" %>
+      <% end %>
+      <ul>
+        <li><a href="#"><%= t('.Aveeno') %></a></li>
+	<li><a href="#"><%= t('.Dove') %></a> 
+          <ul> 
+            <li><a href="#"><%= t('.Product 1') %></a></li> 
+            <li><a href="#"><%= t('.Product 2') %></a></li> 
+            <li><a href="#"><%= t('.Product 3') %></a></li> 
+            <li><a href="#"><%= t('.Product 4') %></a></li> 
+          </ul> 
+        </li>
+        <li><a href="#"><%= t('.Evelyn') %></a> 
+          <ul> 
+            <li><a href="#"><%= t('.Product 1') %></a></li> 
+            <li><a href="#"><%= t('.Product 2') %></a></li> 
+            <li><a href="#"><%= t('.Product 3') %></a></li> 
+            <li><a href="#"><%= t('.Product 4') %></a></li> 
+            <li><a href="#"><%= t('.Product 5') %></a></li> 
+          </ul> 
+        </li>
+        <li><a href="#"><%= t('.Lakme') %></a> 
+          <ul> 
+            <li><a href="#"><%= t('.Product 1') %></a></li> 
+            <li><a href="#"><%= t('.Product 2') %></a></li> 
+            <li><a href="#"><%= t('.Product 3') %></a></li> 
+            <li><a href="#"><%= t('.Product 4') %></a></li> 
+          </ul> 
+        </li> 
+
+      </ul><br/><br/>
+      <% if session[:user_id] %>
+        <ul>
+          <li><%= link_to 'Orders',   orders_path   %></li>
+          <li><%= link_to 'Products', products_path %></li>
+          <li><%= link_to 'Users',    users_path    %></li>
+        </ul>
+        <%= button_to 'Logout', logout_path, method: :delete   %>
+      <% end %>
+      <br/>
+         
+    </div>
+    
+    <div id="rightside">
+      <% if @cart %>
+        <%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
+          <%= render @cart %>
+        <% end %>
+      <% end %>
+      
+      
+    </div>
+      
+    
+    <div id="main">
+<!-- END_HIGHLIGHT -->
+      <%= yield %><!-- <label id="code.depot.e.include"/> -->
+<!-- START_HIGHLIGHT -->
+    </div>
+  </div>
+<!-- END_HIGHLIGHT -->
+</body>
+</html>
+

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: Vijay
+  address: 311 Yale
+  email: vijay@unm.edu
+  pay_type: Cheque
+
+two:
+  name: Krishna
+  address: 311 Cornell
+  email: vkrishna@unm.edu
+  pay_type: Credit card

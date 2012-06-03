@@ -1,0 +1,77 @@
+#START:layout
+#START:main
+#START:cart
+#START:currency
+#START:checkout
+#START:flash
+en:
+
+#END:cart
+#END:checkout
+#END:flash
+#END:main
+#END:layout
+  number:
+    currency:
+      format:
+        unit:      "$"
+        precision: 2
+        separator: "."
+        delimiter: ","
+        format:    "%u%n"
+#END:currency
+
+#START:errors
+  errors:
+    template:
+      body:        "There were problems with the following fields:"
+      header:       
+        one:       "1 error prohibited this %{model} from being saved"
+        other:     "%{count} errors prohibited this %{model} from being saved"
+#END:errors
+
+#START:layout
+  layouts:
+    application:
+      title:     "BodyBay"
+      Aveeno:    "Aveeno"
+      Dove:      "Dove"
+      Evelyn:    "Evelyn"
+      Lakme:     "Lakme"
+      Product 1:  "Product 1"
+      Product 2:  "Product 2"	
+      Product 3:  "Product 3"
+      Product 4:  "Product 4"
+#END:layout
+
+#START:cart
+  carts:
+    cart:
+      title:       "Your Bag"
+      empty:       "Empty Bag"
+      checkout:    "Checkout!"
+#END:cart
+
+#START:main
+  store:
+    index:
+      title_html:  "Your BodyBay Catalog"
+      add_html:    "Add to Bag"
+#END:main
+
+#START:checkout
+  orders:
+    new:
+      legend:       "Please Enter Your Details"
+    form:
+      name:         "Name"
+      address_html: "Address"
+      email:        "E-mail"
+      pay_type:     "Pay with"
+      pay_prompt_html: "Select a payment method"
+      submit:       "Place Order"
+#END:checkout
+
+#START:flash
+  thanks:          "Thank you for your order"
+#END:flash
